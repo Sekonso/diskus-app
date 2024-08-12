@@ -67,7 +67,7 @@ describe('UserPage component', () => {
     const { store } = renderWithProviders(<UserPage />, { preloadedState })
 
     // Action
-    const logoutButton = screen.getByRole('button', { name: 'Logoud' })
+    const logoutButton = screen.getByRole('button', { name: 'Logout' })
     act(() => {
       logoutButton.click()
     })
