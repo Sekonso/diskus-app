@@ -45,6 +45,14 @@ describe('Leaderboard async thunk', () => {
   const fakeFailRes = new Error('Error test')
 
   it('Should dispatch correct set of actions when data fetching is successful', async () => {
+    /* SCENARIO
+        - Mock the resolved API call and dispatch
+        - Call the async thunk
+        - Assert dispatch actions to set loading as true, show the loading, and error as false
+        - Assert dispatch actions to set leaderboard state by data from API call
+        - Assert dispatch actions to set loading as false, and hide the loading after thunk is done
+    */
+
     // Arrange
     getLeaderboards.mockResolvedValue(fakeSuccessRes)
     const dispatch = vi.fn()

@@ -23,6 +23,12 @@ describe('Thread detail reducer', () => {
 
   // THREAD DETAIL
   it('Should return the initial state when given by unknown action', () => {
+    /* SCENARIO
+        - Arrange an unknown action
+        - Dispatch unknown action
+        - Assert the state to be equal as the initial value
+    */
+
     // Arrange
     const action = { type: 'unknown' }
 
@@ -34,6 +40,14 @@ describe('Thread detail reducer', () => {
   })
 
   it('Should return new state when given by several set actions', () => {
+    /* SCENARIO
+        - Arrange an new thread, loading, and error data
+        - Set expected result to have all the new datas
+        - Arrange and dispatch actions with new datas as payload
+        - Assert initial state to still persist
+        - Assert result to equal as expected result
+    */
+
     // Arrange
     const newThread = {
       id: 'thread-1',
@@ -76,6 +90,13 @@ describe('Thread detail reducer', () => {
   })
 
   it('Should add userId to the upVotesBy and remove it from downVotesBy when the thread is upvoted', () => {
+    /* SCENARIO
+        - Arrange an userId and store it to downVotesBy of the new thread data
+        - Arrange expected data to move userId from downVotesBy to upVotesBy
+        - Arrange and dispatch actions with new datas as payload
+        - Assert the result to equal as expected
+    */
+
     // Arrange
     const userId = +new Date()
     const newThread = {
@@ -98,6 +119,13 @@ describe('Thread detail reducer', () => {
   })
 
   it('Should add userId to the downVotesBy and remove it from upVotesBy when the thread is downvoted', () => {
+    /* SCENARIO
+        - Arrange an userId and store it to upVotesBy of the new thread data
+        - Arrange expected data to move userId from upVotesBy to downVotesBy
+        - Arrange and dispatch actions with new datas as payload
+        - Assert the result to equal as expected
+    */
+
     // Arrange
     const userId = +new Date()
     const newThread = {
@@ -120,6 +148,13 @@ describe('Thread detail reducer', () => {
   })
 
   it('Should remove userId from the votes when the thread vote is neutralized', () => {
+    /* SCENARIO
+        - Arrange an userId and store it to downVotesBy and upVotesBy of the new thread data
+        - Arrange expected data to remove userId from both downVotesBy and upVotesBy
+        - Arrange and dispatch actions with new datas as payload
+        - Assert the result to equal as expected
+    */
+
     // Arrange
     const userId = +new Date()
     const newThread = {
@@ -143,6 +178,13 @@ describe('Thread detail reducer', () => {
 
   // COMMENTS
   it('Should unshift the new comment to the comment list after adding comments', () => {
+    /* SCENARIO
+        - Arrange a new comment list and new comment
+        - Set expected result to have new comment as the first comment in the comments list
+        - Arrange and dispatch actions with new datas as payload
+        - Assert the result to equal the expected result
+    */
+
     // Arrange
     const newComments = [
       {
@@ -173,9 +215,16 @@ describe('Thread detail reducer', () => {
   })
 
   it('Should add userId to the upVotesBy and remove it from downVotesBy when a comment is upvoted', () => {
+    /* SCENARIO
+        - Arrange an userId and store it to downVotesBy of the new comments data
+        - Arrange expected data to move userId from downVotesBy to upVotesBy
+        - Arrange and dispatch actions with new datas as payload
+        - Assert the result to equal as expected
+    */
+
     // Arrange
     const userId = +new Date()
-    const newComment = [
+    const newComments = [
       {
         id: 'comment-1',
         upVotesBy: [],
@@ -191,8 +240,8 @@ describe('Thread detail reducer', () => {
     ]
 
     const actions = [
-      setComments(newComment),
-      setUpvoteComment({ commentId: newComment[0].id, userId })
+      setComments(newComments),
+      setUpvoteComment({ commentId: newComments[0].id, userId })
     ]
 
     // action
@@ -206,9 +255,16 @@ describe('Thread detail reducer', () => {
   })
 
   it('Should add userId to the downVotesBy and remove it from upVotesBy when a comment is downvoted', () => {
+    /* SCENARIO
+        - Arrange an userId and store it to downVotesBy of the new comments data
+        - Arrange expected data to move userId from upVotesBy to downVotesBy
+        - Arrange and dispatch actions with new datas as payload
+        - Assert the result to equal as expected
+    */
+
     // Arrange
     const userId = +new Date()
-    const newComment = [
+    const newComments = [
       {
         id: 'comment-1',
         upVotesBy: [userId],
@@ -224,8 +280,8 @@ describe('Thread detail reducer', () => {
     ]
 
     const actions = [
-      setComments(newComment),
-      setDownvoteComment({ commentId: newComment[0].id, userId })
+      setComments(newComments),
+      setDownvoteComment({ commentId: newComments[0].id, userId })
     ]
 
     // action
@@ -239,9 +295,16 @@ describe('Thread detail reducer', () => {
   })
 
   it('Should remove userId from the votes when the commment votes is neutralized', () => {
+    /* SCENARIO
+        - Arrange an userId and store it to downVotesBy and upVotesBy of the new comments data
+        - Arrange expected data to remove userId from both downVotesBy and upVotesBy
+        - Arrange and dispatch actions with new datas as payload
+        - Assert the result to equal as expected
+    */
+
     // Arrange
     const userId = +new Date()
-    const newComment = [
+    const newComments = [
       {
         id: 'comment-1',
         upVotesBy: [userId],
@@ -257,8 +320,8 @@ describe('Thread detail reducer', () => {
     ]
 
     const actions = [
-      setComments(newComment),
-      setNeutralVoteComment({ commentId: newComment[0].id, userId })
+      setComments(newComments),
+      setNeutralVoteComment({ commentId: newComments[0].id, userId })
     ]
 
     // action

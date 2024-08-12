@@ -6,6 +6,13 @@ import UserPage from '../../src/pages/UserPage'
 
 describe('UserPage component', () => {
   it("Should display login and register link if user data(auth.me) didn't exist", () => {
+    /* SCENARIO
+        - Preload auth.me state to be empty
+        - Render UserPage component
+        - Get Register and login Link
+        - Assert UserPage if it has register and login Link
+    */
+
     // Arrange
     const preloadedState = {
       auth: {
@@ -26,6 +33,13 @@ describe('UserPage component', () => {
   })
 
   it('Should display user profile if user data(auth.me) already exist', () => {
+    /* SCENARIO
+        - Preload auth.me state with all the necesssary data
+        - Render UserPage component
+        - Get Register and login Link
+        - Assert UserPage if the data from auth.me is displayed
+    */
+
     // Arrange
     const preloadedState = {
       auth: {
@@ -44,12 +58,20 @@ describe('UserPage component', () => {
     renderWithProviders(<UserPage />, { preloadedState })
 
     // Assert
-    expect(screen.getByText('john_doe')).toBeInTheDocument()
-    expect(screen.getByText('John Doe')).toBeInTheDocument()
-    expect(screen.getByText('john@example.com')).toBeInTheDocument()
+    expect(screen.getByText(preloadedState.auth.me.id)).toBeInTheDocument()
+    expect(screen.getByText(preloadedState.auth.me.name)).toBeInTheDocument()
+    expect(screen.getByText(preloadedState.auth.me.email)).toBeInTheDocument()
   })
 
   it('Should delete the user data(auth.me) and navigate login if logout button is clicked', () => {
+    /* SCENARIO
+        - Preload auth.me state with all the necesssary data
+        - Render UserPage component and get the store
+        - Get the logout butotn
+        - Click the logout button
+        - Assert current store if the auth.me state is empty
+    */
+
     // Arrange
     const preloadedState = {
       auth: {

@@ -9,11 +9,23 @@ describe('Login page spec', () => {
   })
 
   it('Should display warnings if inputs are empty', () => {
+    /* SCENARIO
+        - Submit when no input has been typed
+        - Assert to see if the warning and the message is visible
+    */
+
     cy.get('button[type="submit"]').click()
     cy.contains('.warning', 'Please fill all the required fields').should('be.visible')
   })
 
   it('Should display warning if either email or password are incorrect', () => {
+    /* SCENARIO
+        - Submit form with wrong email but correct password
+        - Assert to see if the warning and the error message is visible
+        - Submit form with correct email but wrong password
+        - Assert to see if the warning and the error message is visible
+    */
+
     // Invalid email, valid password
     cy.get('input#email').type(wrongEmail).should('have.value', wrongEmail)
     cy.get('input#password').type(correctPassword).should('have.value', correctPassword)
@@ -28,6 +40,12 @@ describe('Login page spec', () => {
   })
 
   it('Should retrieve the user data with the token if login is success', () => {
+    /* SCENARIO
+        - Submit form with both correct email and password
+        - Assert the url to see if the url move to user page
+        - Assert the avatar, id, name, and email to see if they get the correct data (if they get the data, that means the login is successful and the valid token is retrieved) 
+    */
+
     // Submission
     cy.get('input#email').type(correctEmail).should('have.value', correctEmail)
     cy.get('input#password').type(correctPassword).should('have.value', correctPassword)

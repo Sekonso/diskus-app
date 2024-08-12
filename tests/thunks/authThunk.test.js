@@ -66,6 +66,14 @@ describe('Authentication async thunk', () => {
   const fakeFailRes = new Error('Error test')
 
   it('Should dispatch correct set of actions when userMe fetching is successful', async () => {
+    /* SCENARIO
+        - Mock the resolved API call and dispatch
+        - Call the async thunk
+        - Assert dispatch actions to set loading as true, and error as false
+        - Assert dispatch actions to set auth.ne from user data get from the API call
+        - Assert dispatch actions to set loading as false after thunk is done
+    */
+
     // Arrange
     getUserMe.mockResolvedValue(fakeUserMeSuccessRes)
     const dispatch = vi.fn()
@@ -81,6 +89,13 @@ describe('Authentication async thunk', () => {
   })
 
   it('Should dispatch correct set of actions when userMe fetching is failed', async () => {
+    /* SCENARIO
+        - Mock the rejected API call and dispatch
+        - Call the async thunk
+        - Assert dispatch actions to set loading as true, and error as false
+        - Assert dispatch actions to set loading as false after thunk is done (This call doesn't required to handle the error and just console it instead)
+    */
+
     // Arrange
     getUserMe.mockRejectedValue(fakeFailRes)
     const dispatch = vi.fn()
@@ -95,16 +110,25 @@ describe('Authentication async thunk', () => {
   })
 
   it('Should dispatch correct set of actions when register is successful', async () => {
+    /* SCENARIO
+        - Arrange the register data
+        - Mock the resolved API call, dispatch, and navigate
+        - Call the async thunk
+        - Assert dispatch actions to set loading as true, and error as false
+        - Assert dispatch actions to set loading as false after thunk is done
+        - Assert navigate to go to login page
+    */
+
     // Arrange
     const registerData = {
       name: 'name',
       email: 'name@gmail.com',
       password: 'password'
     }
-    const navigate = vi.fn()
 
     register.mockResolvedValue(fakeRegisterSuccessRes)
     const dispatch = vi.fn()
+    const navigate = vi.fn()
 
     // Action
     await asyncRegister(registerData, navigate)(dispatch)
@@ -117,6 +141,15 @@ describe('Authentication async thunk', () => {
   })
 
   it('Should dispatch correct set of actions when register is failed', async () => {
+    /* SCENARIO
+        - Arrange the register data
+        - Mock the rejected API call, dispatch, and navigate
+        - Call the async thunk
+        - Assert dispatch actions to set loading as true, and error as false
+        - Assert dispatch actions to set error as true and pass the error message
+        - Assert dispatch actions to set loading as false after thunk is done
+    */
+
     // Arrange
     const registerData = {
       name: 'name',
@@ -141,17 +174,29 @@ describe('Authentication async thunk', () => {
   })
 
   it('Should dispatch correct set of actions when login is successful', async () => {
+    /* SCENARIO
+        - Arrange the login data
+        - Mock the resolved API call, dispatch, and navigate
+        - Spy on localStorage
+        - Call the async thunk
+        - Assert dispatch actions to set loading as true, and error as false
+        - Assert dispatch actions to set auth.me data from resolved getUserMe API call
+        - Assert dispatch actions to set loading as false after thunk is done
+        - Assert localStorage.setItem to store "token" key from token from resolved login API call
+        - Assert navigate to go to user page
+    */
+
     // Arrange
     const loginData = {
       email: 'name@gmail.com',
       password: 'password'
     }
-    const navigate = vi.fn()
-    const localStorageSpy = vi.spyOn(global.localStorage, 'setItem')
 
     login.mockResolvedValue(fakeLoginSuccessRes)
     getUserMe.mockResolvedValue(fakeUserMeSuccessRes)
     const dispatch = vi.fn()
+    const navigate = vi.fn()
+    const localStorageSpy = vi.spyOn(global.localStorage, 'setItem')
 
     // Action
     await asyncLogin(loginData, navigate)(dispatch)
@@ -166,6 +211,15 @@ describe('Authentication async thunk', () => {
   })
 
   it('Should dispatch correct set of actions when login is failed', async () => {
+    /* SCENARIO
+        - Arrange the login data
+        - Mock the rejected API call and dispatch
+        - Call the async thunk
+        - Assert dispatch actions to set loading as true, and error as false
+        - Assert dispatch actions to set error as true and pass the error message
+        - Assert dispatch actions to set loading as false after thunk is done
+    */
+
     // Arrange
     const loginData = {
       email: 'name@gmail.com',
