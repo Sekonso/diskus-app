@@ -1,0 +1,64 @@
+.comment-form {
+  margin-top: 2rem;
+}
+.comment-form textarea {
+  display: block;
+  background: var(--background-color);
+  color: var(--text-color);
+  outline: none;
+  border: none;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  width: 100%;
+  height: 65px;
+  border-radius: 5px;
+}
+.comment-form button {
+  font-size: 0.8rem;
+  background: white;
+  color: var(--sub-background-color);
+  width: 100%;
+  padding: 0.3rem;
+  border-radius: 5px;
+}
+
+.comments-list {
+  margin-top: 1.5rem;
+}
+
+.comment {
+  background: var(--background-color);
+  margin-block: 1rem;
+  padding: 1rem;
+  border-radius: 5px;
+}
+
+.comment-user {
+  display: flex;
+  align-items: center;
+}
+.comment-user img {
+  width: 25px;
+  height: 25px;
+  border-radius: 50px;
+}
+.comment-user p {
+  margin-left: 0.5rem;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.comment-content {
+  margin-block: 1rem;
+}
+
+.comment-votes {
+  display: flex;
+}
+.comment-votes button {
+  font-size: 1rem;
+  margin-top: 0.1rem;
+}
+.comment-votes span {
+  margin-inline: 0.2rem 0.5rem;
+}

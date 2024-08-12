@@ -1,0 +1,51 @@
+.thread-detail .upper .owner {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.thread-detail .upper .owner img {
+  width: 25px;
+  height: 25px;
+  border-radius: 50px;
+}
+
+.thread-detail .upper .owner span {
+  font-size: 0.8rem;
+  opacity: 0.7;
+}
+
+.thread-detail .upper h2 {
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.thread-detail .lower {
+  margin-top: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.thread-detail .lower .buttons {
+  display: flex;
+  align-items: center;
+}
+
+.thread-detail .lower button {
+  font-size: 1.2rem;
+  margin-top: 0.2rem;
+}
+
+.thread-detail .lower span {
+  margin-left: 0.3rem;
+  margin-right: 1.2rem;
+}
+
+.thread-detail .lower .tag {
+  font-size: 0.9rem;
+  padding: 0.5rem;
+  border: 1px solid;
+  border-image-source: var(--neon-color);
+  border-image-slice: 1;
+}

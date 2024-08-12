@@ -1,0 +1,36 @@
+.leaderboard {
+  padding-bottom: 2rem;
+}
+
+.leaderboard-header th {
+  text-align: left;
+  width: 100%;
+  padding: 1rem 0;
+}
+
+.rank-user {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.3rem 0;
+  margin-right: 2rem;
+}
+
+.rank-user img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50px;
+}
+
+.leaderboard-body .rank:nth-child(1) .rank-user img {
+  border: 3px solid gold;
+  box-shadow: 0 0 3px gold;
+}
+.leaderboard-body .rank:nth-child(2) .rank-user img {
+  border: 3px solid silver;
+  box-shadow: 0 0 3px silver;
+}
+.leaderboard-body .rank:nth-child(3) .rank-user img {
+  border: 3px solid rgb(82, 62, 37);
+  box-shadow: 0 0 3px rgb(82, 62, 37);
+}
