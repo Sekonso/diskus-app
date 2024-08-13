@@ -43,7 +43,7 @@ describe('Login page spec', () => {
     /* SCENARIO
         - Submit form with both correct email and password
         - Assert the url to see if the url move to user page
-        - Assert the avatar, id, name, and email to see if they get the correct data (if they get the data, that means the login is successful and the valid token is retrieved) 
+        - Assert the avatar, id, name, and email to see if they get the correct data (if they get the data, that means the login is successful and the valid token is retrieved)
     */
 
     // Submission

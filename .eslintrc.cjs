@@ -3,22 +3,23 @@ module.exports = {
   env: { browser: true, es2020: true, 'cypress/globals': true },
   extends: [
     'standard',
-    'cypress',
     'eslint:recommended',
     'plugin:react/recommended',
     'plugin:react/jsx-runtime',
-    'plugin:react-hooks/recommended'
+    'plugin:react-hooks/recommended',
+    'plugin:cypress/recommended'
   ],
   ignorePatterns: ['dist', '.eslintrc.cjs'],
   parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
   settings: { react: { version: '18.2' } },
-  plugins: ['react-refresh'],
+  plugins: ['react-refresh', 'cypress'],
   rules: {
     'no-unused-vars': 'off',
     'space-before-function-paren': 'off',
     'multiline-ternary': 'off',
     'react/jsx-no-target-blank': 'off',
     'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
-    'react-hooks/exhaustive-deps': 'off'
+    'react-hooks/exhaustive-deps': 'off',
+    'cypress/unsafe-to-chain-command': 'off'
   }
 }
